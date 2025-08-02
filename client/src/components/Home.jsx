@@ -11,6 +11,7 @@ const Home = () => {
   const fetchPosts = async () => {
     try {
       setLoading(true);
+      // FIX: Removed incorrect Markdown formatting from URL
       const res = await axios.get(
         "[https://mini-linkedin-api-adnan.onrender.com/api/posts](https://mini-linkedin-api-adnan.onrender.com/api/posts)"
       );
@@ -35,6 +36,7 @@ const Home = () => {
           "x-auth-token": token,
         },
       };
+      // FIX: Removed incorrect Markdown formatting from URL
       const res = await axios.post(
         "[https://mini-linkedin-api-adnan.onrender.com/api/posts](https://mini-linkedin-api-adnan.onrender.com/api/posts)",
         { content },

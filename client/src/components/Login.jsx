@@ -20,6 +20,7 @@ const Login = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
+      // This URL was already correct, no changes needed
       const res = await axios.post(
         "https://mini-linkedin-api-adnan.onrender.com/api/auth/login",
         formData
