@@ -11,7 +11,9 @@ const Home = () => {
   const fetchPosts = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:5000/api/posts");
+      const res = await axios.get(
+        "[https://mini-linkedin-api-adnan.onrender.com/api/posts](https://mini-linkedin-api-adnan.onrender.com/api/posts)"
+      );
       setPosts(res.data);
     } catch (err) {
       console.error("Error fetching posts:", err);
@@ -34,7 +36,7 @@ const Home = () => {
         },
       };
       const res = await axios.post(
-        "http://localhost:5000/api/posts",
+        "[https://mini-linkedin-api-adnan.onrender.com/api/posts](https://mini-linkedin-api-adnan.onrender.com/api/posts)",
         { content },
         config
       );

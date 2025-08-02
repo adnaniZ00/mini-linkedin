@@ -14,13 +14,13 @@ const Profile = () => {
         setLoading(true);
         // Fetch user details
         const userRes = await axios.get(
-          `http://localhost:5000/api/users/${userId}`
+          `https://mini-linkedin-api-adnan.onrender.com/api/users/${userId}`
         );
         setUser(userRes.data);
 
         // Fetch user's posts
         const postsRes = await axios.get(
-          `http://localhost:5000/api/posts/user/${userId}`
+          `https://mini-linkedin-api-adnan.com/api/posts/user/${userId}`
         );
         setPosts(postsRes.data);
       } catch (err) {
