@@ -22,7 +22,6 @@ const Register = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      // FIX: Removed incorrect Markdown formatting from URL
       const res = await axios.post(
         "[https://mini-linkedin-api-adnan.onrender.com/api/auth/register](https://mini-linkedin-api-adnan.onrender.com/api/auth/register)",
         formData

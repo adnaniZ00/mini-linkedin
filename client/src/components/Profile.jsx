@@ -19,7 +19,6 @@ const Profile = () => {
         setUser(userRes.data);
 
         // Fetch user's posts
-        // FIX: Corrected typo in URL
         const postsRes = await axios.get(
           `https://mini-linkedin-api-adnan.onrender.com/api/posts/user/${userId}`
         );
