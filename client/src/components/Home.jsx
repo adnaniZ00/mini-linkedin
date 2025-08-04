@@ -8,11 +8,14 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("token");
 
+  // Use the environment variable for the API URL
+  const API_URL = process.env.REACT_APP_API_URL;
+
   const fetchPosts = async () => {
     try {
       setLoading(true);
       const res = await axios.get(
-        "https://mini-linkedin-api-adnan.onrender.com/api/posts"
+        `${API_URL}/api/posts` // Updated to use API_URL
       );
       setPosts(res.data);
     } catch (err) {
@@ -36,7 +39,7 @@ const Home = () => {
         },
       };
       const res = await axios.post(
-        "https://mini-linkedin-api-adnan.onrender.com/api/posts",
+        `${API_URL}/api/posts`, // Updated to use API_URL
         { content },
         config
       );

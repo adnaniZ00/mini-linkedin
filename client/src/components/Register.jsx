@@ -22,10 +22,9 @@ const Register = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        "https://mini-linkedin-api-adnan.onrender.com/api/auth/register",
-        formData
-      );
+      // Use the environment variable for the API URL
+      const API_URL = process.env.REACT_APP_API_URL;
+      const res = await axios.post(`${API_URL}/api/auth/register`, formData);
       localStorage.setItem("token", res.data.token);
       navigate("/");
     } catch (err) {

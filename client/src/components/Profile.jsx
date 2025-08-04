@@ -8,19 +8,22 @@ const Profile = () => {
   const [loading, setLoading] = useState(true);
   const { userId } = useParams();
 
+  // Use the environment variable for the API URL
+  const API_URL = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
         setLoading(true);
         // Fetch user details
         const userRes = await axios.get(
-          `https://mini-linkedin-api-adnan.onrender.com/api/users/${userId}`
+          `${API_URL}/api/users/${userId}` // Updated to use API_URL
         );
         setUser(userRes.data);
 
         // Fetch user's posts
         const postsRes = await axios.get(
-          `https://mini-linkedin-api-adnan.onrender.com/api/posts/user/${userId}`
+          `${API_URL}/api/posts/user/${userId}` // Updated to use API_URL
         );
         setPosts(postsRes.data);
       } catch (err) {

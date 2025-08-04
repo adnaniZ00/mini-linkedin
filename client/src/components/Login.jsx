@@ -7,25 +7,27 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [error, setError] = useState(""); // State for error messages
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const { email, password } = formData;
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    setError(""); // Clear error when user starts typing
+    setError("");
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Use the environment variable for the API URL
+      const API_URL = process.env.REACT_APP_API_URL;
       const res = await axios.post(
-        "https://mini-linkedin-api-adnan.onrender.com/api/auth/login",
+        `${API_URL}/api/auth/login`, // Updated to use API_URL
         formData
       );
       localStorage.setItem("token", res.data.token);
-      navigate("/"); // Redirect to home on successful login
+      navigate("/");
     } catch (err) {
       // Set error message from server response, or a generic one
       setError(
