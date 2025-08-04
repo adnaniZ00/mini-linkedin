@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom"; // Import Link for author profile
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -57,9 +57,18 @@ const Profile = () => {
         {posts.length > 0 ? (
           posts.map((post) => (
             <div key={post._id} className="post">
-              <p className="post-date">
-                {new Date(post.createdAt).toLocaleString()}
-              </p>
+              {/* Added post-meta wrapper for consistent styling */}
+              <div className="post-meta">
+                {/* Added post-author for consistency with Home feed */}
+                <p className="post-author">
+                  <Link to={`/profile/${post.author._id}`}>
+                    {post.author.name}
+                  </Link>
+                </p>
+                <p className="post-date">
+                  {new Date(post.createdAt).toLocaleString()}
+                </p>
+              </div>
               <p className="post-content">{post.content}</p>
             </div>
           ))
