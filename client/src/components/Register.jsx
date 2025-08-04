@@ -9,27 +9,26 @@ const Register = () => {
     password: "",
     bio: "",
   });
-  const [error, setError] = useState(""); // State for error messages
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const { name, email, password, bio } = formData;
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    setError(""); // Clear error when user starts typing
+    setError("");
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "[https://mini-linkedin-api-adnan.onrender.com/api/auth/register](https://mini-linkedin-api-adnan.onrender.com/api/auth/register)",
+        "https://mini-linkedin-api-adnan.onrender.com/api/auth/register",
         formData
       );
       localStorage.setItem("token", res.data.token);
-      navigate("/"); // Redirect to home on successful registration
+      navigate("/");
     } catch (err) {
-      // Set error message from server response, or a generic one
       setError(
         err.response?.data?.msg ||
           "An unexpected error occurred. Please try again."
@@ -41,7 +40,8 @@ const Register = () => {
   return (
     <div className="form-container">
       <h2>Register</h2>
-      <form onSubmit={onSubmit}>
+      {/* Added new class 'register-form-content' to the form tag */}
+      <form onSubmit={onSubmit} className="register-form-content">
         {error && <p className="error-message">{error}</p>}
         <div className="form-group">
           <label>Name</label>

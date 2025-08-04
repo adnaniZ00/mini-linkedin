@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [content, setContent] = useState("");
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("token");
 
   const fetchPosts = async () => {
     try {
       setLoading(true);
       const res = await axios.get(
-        "[https://mini-linkedin-api-adnan.onrender.com/api/posts](https://mini-linkedin-api-adnan.onrender.com/api/posts)"
+        "https://mini-linkedin-api-adnan.onrender.com/api/posts"
       );
       setPosts(res.data);
     } catch (err) {
@@ -36,7 +36,7 @@ const Home = () => {
         },
       };
       const res = await axios.post(
-        "[https://mini-linkedin-api-adnan.onrender.com/api/posts](https://mini-linkedin-api-adnan.onrender.com/api/posts)",
+        "https://mini-linkedin-api-adnan.onrender.com/api/posts",
         { content },
         config
       );
@@ -77,14 +77,17 @@ const Home = () => {
         ) : posts.length > 0 ? (
           posts.map((post) => (
             <div key={post._id} className="post">
-              <p className="post-author">
-                <Link to={`/profile/${post.author._id}`}>
-                  {post.author.name}
-                </Link>
-              </p>
-              <p className="post-date">
-                {new Date(post.createdAt).toLocaleString()}
-              </p>
+              {/* NEW WRAPPER FOR AUTHOR AND DATE */}
+              <div className="post-meta">
+                <p className="post-author">
+                  <Link to={`/profile/${post.author._id}`}>
+                    {post.author.name}
+                  </Link>
+                </p>
+                <p className="post-date">
+                  {new Date(post.createdAt).toLocaleString()}
+                </p>
+              </div>
               <p className="post-content">{post.content}</p>
             </div>
           ))

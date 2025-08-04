@@ -77,67 +77,81 @@ body {
   background-color: #f0f2f5;
 }
 
-/* Form styles */
+/* Form styles (ENHANCED) */
 .form-container {
   background-color: #fff;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem; /* Increased padding */
+  border-radius: 10px; /* Slightly more rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Stronger shadow */
   max-width: 450px;
-  margin: 40px auto;
+  margin: 50px auto; /* Increased top/bottom margin */
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem; /* Space between form groups */
 }
 
 .form-container h2 {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem; /* Adjusted margin */
   color: #1c1e21;
+  font-size: 2rem; /* Larger heading */
+  font-weight: 700;
 }
 
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 0; /* Reset default margin, controlled by gap on container */
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px; /* More space below label */
   font-weight: 600;
   color: #333;
+  font-size: 0.95rem; /* Slightly larger label font */
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  box-sizing: border-box; /* Important */
-  transition: border-color 0.2s ease-in-out;
+  padding: 14px; /* Increased padding */
+  border: 1px solid #d1d5db; /* Lighter border color */
+  border-radius: 8px; /* More rounded input fields */
+  box-sizing: border-box;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   font-size: 1rem;
+  line-height: 1.5; /* Ensure consistent line height */
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
   border-color: #0a66c2;
-  box-shadow: 0 0 0 2px rgba(10, 102, 194, 0.2);
+  box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.25); /* More prominent focus ring */
 }
 
 .btn {
   width: 100%;
-  padding: 12px;
+  padding: 15px; /* Increased padding for button */
   border: none;
-  border-radius: 6px;
+  border-radius: 8px; /* More rounded button */
   background-color: #0a66c2;
   color: white;
-  font-size: 1rem;
-  font-weight: 700; /* Bolder */
+  font-size: 1.1rem; /* Larger button text */
+  font-weight: 700;
   cursor: pointer;
-  margin-top: 10px;
-  transition: background-color 0.2s ease-in-out;
+  margin-top: 15px; /* More space above the button */
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow to button */
 }
 
 .btn:hover {
   background-color: #004182;
+  transform: translateY(-1px); /* Slight lift effect on hover */
+}
+
+.btn:active {
+  transform: translateY(0); /* Reset on click */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15); /* Pressed effect */
 }
 
 /* General Page Title */
@@ -155,6 +169,8 @@ body {
   border: 1px solid #ddd;
   border-radius: 8px;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .post-form textarea {
@@ -168,9 +184,17 @@ body {
   box-sizing: border-box;
 }
 
+/* New style for the post metadata container */
+.post-meta {
+  display: flex; /* Use flexbox to put items on one line */
+  align-items: baseline; /* Align items at their text baseline */
+  margin-bottom: 5px; /* Space between meta and content */
+}
+
 .post-author {
   font-weight: 600;
-  margin-bottom: 5px;
+  color: #1c1e21;
+  margin: 0; /* Remove default margin from p tag */
 }
 
 .post-author a {
@@ -184,10 +208,12 @@ body {
 .post-date {
   font-size: 0.8rem;
   color: #65676b;
-  margin-bottom: 15px;
+  margin: 0; /* Remove default margin from p tag */
+  margin-left: 8px; /* Add space between author and date */
 }
 
 .post-content {
+  margin-top: 15px; /* Add some space above the content */
   line-height: 1.5;
   white-space: pre-wrap; /* Preserve line breaks in posts */
 }
