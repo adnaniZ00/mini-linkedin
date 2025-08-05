@@ -1,70 +1,152 @@
-# Getting Started with Create React App
+Mini LinkedIn-like Community Platform
+This project is a simplified version of a LinkedIn-like community platform, built as an assignment for the Full Stack Development Intern position at CIAAN Cyber Tech Pvt Ltd. It features user authentication, public post feed functionality, and individual user profile pages.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Live Demo
+🔗 Live Demo URL: [https://mini-linkedin-frontend-l695.onrender.com]
 
-## Available Scripts
+GitHub Repository
+💻 GitHub Repo Link: [https://github.com/adnaniZ00/mini-linkedin.git]
 
-In the project directory, you can run:
+Tech Stack Used
+Frontend: React.js
 
-### `npm start`
+Backend: Node.js with Express.js
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Database: MongoDB (via Mongoose ODM)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Deployment: Render (for both client and server)
 
-### `npm test`
+Required Features Implemented
+User Authentication:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Users can register with email and password.
 
-### `npm run build`
+Existing users can log in.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+User profiles include name, email, and a customizable bio.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Public Post Feed:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Users can create new text-only posts.
 
-### `npm run eject`
+All posts are displayed in a public home feed.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Each post shows the author's name and a timestamp.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Profile Page:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Users can view their own profile.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Users can click on an author's name in the home feed to view that user's public profile and all their posts.
 
-## Learn More
+Setup Instructions (Local Development)
+To run this project locally, follow these steps:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Prerequisites
+Node.js (v14 or higher recommended)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+npm or Yarn
 
-### Code Splitting
+MongoDB (running locally or accessible via a cloud service like MongoDB Atlas)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. Clone the Repository
+   git clone [https://github.com/adnaniZ00/mini-linkedin.git]
+   cd mini-linkedin-platform # Or whatever your root folder is named
 
-### Analyzing the Bundle Size
+2. Backend Setup (Server)
+   Navigate to the server directory, install dependencies, and start the server.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+cd server
+npm install # or yarn install
 
-### Making a Progressive Web App
+Create a .env file in the server directory:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+MONGO_URI=your_mongodb_connection_string_here
+JWT_SECRET=your_jwt_secret_key_here
+PORT=5000
 
-### Advanced Configuration
+Replace your_mongodb_connection_string_here with your MongoDB connection string (e.g., mongodb://localhost:27017/minilinkedin for local or an Atlas URI).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Replace your_jwt_secret_key_here with a strong, random string (e.g., generated from node -e "console.log(require('crypto').randomBytes(32).toString('hex'))").
 
-### Deployment
+Start the Backend Server:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+npm start # or yarn start
 
-### `npm run build` fails to minify
+The server should start on http://localhost:5000.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+3. Frontend Setup (Client)
+   Open a new terminal window, navigate to the client directory, install dependencies, and start the frontend.
+
+cd ../client # Go back to root, then into client
+npm install # or yarn install
+
+Create a .env file in the client directory:
+
+REACT_APP_API_URL=http://localhost:5000
+
+This points your local frontend to your local backend.
+
+Start the Frontend Development Server:
+
+npm start # or yarn start
+
+The frontend should open in your browser at http://localhost:3000 (or another available port).
+
+Deployment Details
+Both the frontend and backend are deployed on Render for seamless full-stack hosting.
+
+Backend (Web Service):
+
+Deployed at: https://mini-linkedin-api-adnan.onrender.com
+
+Build Command: npm install
+
+Start Command: npm start
+
+Environment Variables: MONGO_URI, JWT_SECRET, PORT (configured on Render dashboard)
+
+Frontend (Static Site):
+
+Deployed at: [https://mini-linkedin-frontend-l695.onrender.com]
+
+Root Directory: client
+
+Build Command: npm install && npm run build
+
+Publish Directory: build
+
+Environment Variables: REACT_APP_API_URL (configured on Render dashboard, pointing to the backend URL)
+
+Admin/Demo User Logins (if applicable)
+For evaluation purposes, you can use the following credentials:
+
+Email: demo@example.com
+
+Password: password123
+
+(You should create this user in your local MongoDB or directly via your deployed backend's registration endpoint before submission if you want to provide pre-made credentials.)
+
+Extra Features (Optional)
+(If you implemented any features beyond the requirements, list them here. Examples:)
+
+User profile editing.
+
+"Like" or "Comment" functionality on posts.
+
+Real-time updates for new posts (e.g., using WebSockets).
+
+Search functionality for users or posts.
+
+Improved UI/UX details (e.g., loading spinners, error messages).
+
+Responsive design considerations for various screen sizes.
+
+Evaluation Notes
+Code Quality: Focus on clean, readable, and maintainable code.
+
+Responsiveness: The application is designed to be responsive across different devices.
+
+UI/UX: Efforts have been made to create an intuitive and visually appealing user interface.
+
+Functionality: All required features are fully implemented and functional.
